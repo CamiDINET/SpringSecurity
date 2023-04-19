@@ -42,9 +42,9 @@ public class MySecurityConfig {
         http
 
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/").permitAll()
                         .requestMatchers("/avengers/assemble/**").hasRole("CHAMPION")
                         .requestMatchers("/secret-bases/**").hasRole("DIRECTOR")
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults());
